@@ -5,7 +5,7 @@ n, k = map(int, input().split())
 z = [0] + list(map(int, list(input())))
 d = 1000000007
 
-a = [1] + [0] * n  # от текущей до -k
+a = [0] + [0] * n  # от текущей до -k
 q = [0] + [0] * n  # от текущей до 0
 a[1] = 1 - z[1]
 q[1] = a[1]
@@ -17,9 +17,10 @@ for i in range(2, n + 1):
     else:
         ng = max(i-k-1, 0)
         a[i] = (q[i-1] - q[ng]) % d
-        q[i] = q[i-1] + 1
+        q[i] = q[i-1] * 2
 
 print(a[n])
+print(z)
 print(a)
 print(q)
 
